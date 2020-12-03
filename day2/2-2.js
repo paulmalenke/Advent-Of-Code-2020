@@ -4,7 +4,7 @@ class Password {
     constructor(password, requiredCharacter, positions) {
         this.password = password;
         this.requiredCharacter = requiredCharacter;
-        this.positions = positions
+        this.positions = positions;
     }
 
     get isValid() {
@@ -13,13 +13,14 @@ class Password {
 
     checkValidity() {
         let chars = new Set();
-        this.positions.forEach(pos => {
-            chars.add(this.password.charAt(pos-1))
+        this.positions.forEach((pos) => {
+            chars.add(this.password.charAt(pos - 1));
         });
 
         if (
-            chars.size === this.positions.length && chars.has(this.requiredCharacter)
-        ) { 
+            chars.size === this.positions.length &&
+            chars.has(this.requiredCharacter)
+        ) {
             return true;
         }
         return false;
@@ -36,12 +37,10 @@ let passwords = [];
 input.forEach((line) => {
     const match = regexp.exec(line);
     passwords.push(
-        new Password(
-            match.groups.password,
-            match.groups.requiredCharacter,
-            [parseInt(match.groups.positionOne),
-            parseInt(match.groups.positionTwo)]
-        )
+        new Password(match.groups.password, match.groups.requiredCharacter, [
+            parseInt(match.groups.positionOne),
+            parseInt(match.groups.positionTwo),
+        ])
     );
 });
 

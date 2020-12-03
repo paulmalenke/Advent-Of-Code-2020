@@ -32,19 +32,26 @@ let regexp = /(?<minRequired>\w+)-(?<maxRequired>\w+) (?<requiredCharacter>\w+):
 
 let passwords = [];
 
-input.forEach(line => {
+input.forEach((line) => {
     const match = regexp.exec(line);
-    passwords.push(new Password(match.groups.password, match.groups.requiredCharacter, match.groups.minRequired, match.groups.maxRequired));
+    passwords.push(
+        new Password(
+            match.groups.password,
+            match.groups.requiredCharacter,
+            match.groups.minRequired,
+            match.groups.maxRequired
+        )
+    );
 });
 
 let totalValid = 0;
 
-passwords.forEach(password => {
+passwords.forEach((password) => {
     if (password.isValid) {
         totalValid++;
     }
 });
 
-console.log(totalValid)
+console.log(totalValid);
 
 // 483

@@ -1,5 +1,4 @@
 let fs = require("fs");
-const { nextTick } = require("process");
 let file = fs.readFileSync("./3.txt").toString();
 let input = file.split("\n");
 
@@ -13,9 +12,9 @@ findTrees = (lineArray, moveRight, moveDown) => {
     let trees = 0;
     let x = 0;
 
-    let skips = 1
+    let skips = 1;
     lineArray.forEach((line, idx) => {
-        if ((moveDown > 1 ) && ((idx+1) % moveDown === 0)) {
+        if (moveDown > 1 && (idx + 1) % moveDown === 0) {
             return;
         }
         position = x % line.length;
